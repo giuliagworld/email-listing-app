@@ -1,0 +1,10 @@
+{
+  "users": [
+    {
+      "name": "giulia",
+      "email": "giulia@gmail.com",
+      "subscribe": true,
+      "id": 1
+    }
+  ]
+}
