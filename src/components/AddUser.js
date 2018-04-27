@@ -2,28 +2,24 @@ import React from 'react';
 import createReactClass from "create-react-class";
 import PropTypes from 'prop-types';
 
-import AddUser from './AddUser';
-
-const App = createReactClass({
+const AddUser = createReactClass({
   propTypes: {
-    users: PropTypes.array.isRequired,
-    name: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired
+    onAdd: PropTypes.func.isRequired
   },
-  getDefaultProps: function () {
+  // getDefaultProps: function () {
+  //   return {
+  //     users: [],
+  //     name: '',
+  //     email: '',
+  //     subscribe: false
+  //   }
+  // },
+  getInitialState: function () {
     return {
       users: [],
       name: '',
       email: '',
       subscribe: false
-    }
-  },
-  getInitialState: function () {
-    return {
-      users: [],
-      name: this.props.name,
-      email: this.props.email,
-      subscribe: this.props.subscribe
     }
   },
   handleInputChange(e) {
@@ -63,16 +59,16 @@ const App = createReactClass({
         let users = data.map((user) => {
           return (
             <li key={user.id}>
-              <div>{ user.name }</div>
-              <div>{ user.email }</div>
-              <div>{ user.subscribe ? 'true' : 'false' }</div>
+              <div>{user.name}</div>
+              <div>{user.email}</div>
+              <div>{user.subscribe ? 'true' : 'false'}</div>
             </li>
           )
         })
-        this.setState({users : users});
+        this.setState({ users: users });
       })
   },
-  render: function() {
+  render: function () {
     return (
       <div>
         <form onSubmit={this.onSubmit}>
@@ -90,4 +86,4 @@ const App = createReactClass({
   }
 })
 
-export default App;
+export default AddUser;

@@ -1,9 +1,9 @@
 {
   "users": [
     {
-      "name": "giulia",
+      "name": "Giulia",
       "email": "giulia@gmail.com",
-      "subscribe": true,
+      "subscribe": false,
       "id": 1
     }
   ]
