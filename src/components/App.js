@@ -2,20 +2,20 @@ import React from 'react';
 import createReactClass from "create-react-class";
 import PropTypes from 'prop-types';
 
-import AddUser from './AddUser';
+// import AddUser from './AddUser';
 
 const App = createReactClass({
-  propTypes: {
-    users: PropTypes.array.isRequired,
-    name: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired
-  },
+  // propTypes: {
+  //   users: PropTypes.array.isRequired,
+  //   name: PropTypes.string.isRequired,
+  //   email: PropTypes.string.isRequired
+  // }
   getDefaultProps: function () {
     return {
       users: [],
       name: '',
       email: '',
-      subscribe: false
+      checkbox: false
     }
   },
   getInitialState: function () {
@@ -23,7 +23,7 @@ const App = createReactClass({
       users: [],
       name: this.props.name,
       email: this.props.email,
-      subscribe: this.props.subscribe
+      checkbox: this.props.checkbox
     }
   },
   handleInputChange(e) {
@@ -46,13 +46,13 @@ const App = createReactClass({
       body: JSON.stringify({
         name: this.state.name,
         email: this.state.email,
-        subscribe: this.state.subscribe
+        checkbox: this.state.checkbox
       })
     })
     this.setState({
       name: '',
       email: '',
-      subscribe: false
+      checkbox: false
     })
   },
   displayUsers: function () {
@@ -63,9 +63,9 @@ const App = createReactClass({
         let users = data.map((user) => {
           return (
             <li key={user.id}>
-              <div>{ user.name }</div>
-              <div>{ user.email }</div>
-              <div>{ user.subscribe ? 'true' : 'false' }</div>
+              <input type='text' name='name' value={user.name} onChange={this.handleInputChange}/>
+              <input type='email' name='email' value={user.email} onChange={this.handleInputChange}/>
+              <input type='checkbox' name='checkbox' checked={user.checkbox} onChange={this.handleInputChange} /><br />
             </li>
           )
         })
@@ -78,8 +78,8 @@ const App = createReactClass({
         <form onSubmit={this.onSubmit}>
           <input type='text' placeholder='Name' name='name' value={this.state.name} onChange={this.handleInputChange} /><br />
           <input type='email' placeholder='Email' name='email' value={this.state.email} onChange={this.handleInputChange} /><br />
-          <label htmlFor='subscribe'>Subscribe</label>
-          <input id='subscribe' type='checkbox' name='checkbox' defaultChecked={this.state.subscribe} onChange={this.handleInputChange} /><br />
+          <label htmlFor='checkbox'>Subscribe</label>
+          <input id='checkbox' type='checkbox' name='checkbox' defaultChecked={this.state.checkbox} onChange={this.handleInputChange} /><br />
           <button type='submit'>Submit</button>
         </form>
         <br />
