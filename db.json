@@ -1,0 +1,35 @@
+{
+  "users": [
+    {
+      "name": "Giulia Gazzabin",
+      "email": "giulia@thehouseshop.com",
+      "admin": true,
+      "id": 1
+    },
+    {
+      "name": "Dean Ridgeley",
+      "email": "dean@thehouseshop.com",
+      "subscribe": true,
+      "id": 2
+    },
+    {
+      "name": "Alvin C",
+      "email": "alvin@thehouseshop.com",
+      "subscribe": false,
+      "id": 3
+    },
+    {
+      "name": "Thomas",
+      "email": "thomas@thehouseshop.com",
+      "subscribe": true,
+      "id": 4
+    },
+    {
+      "name": "Nick",
+      "email": "nick@thehouseshop.com",
+      "subscribe": true,
+      "id": 5
+    }
+  ],
+  "login": []
+}
