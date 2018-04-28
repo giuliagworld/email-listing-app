@@ -1,34 +1,67 @@
 {
   "users": [
     {
-      "name": "Giulia Gazzabin",
-      "email": "giulia@thehouseshop.com",
+      "name": "Giulia",
+      "email": "giulia@gmail.com",
+      "subscribe": false,
       "admin": true,
       "id": 1
     },
     {
-      "name": "Dean Ridgeley",
-      "email": "dean@thehouseshop.com",
+      "name": "Dean",
+      "email": "dean@gmail.com",
       "subscribe": true,
+      "admin": false,
       "id": 2
     },
     {
-      "name": "Alvin C",
-      "email": "alvin@thehouseshop.com",
-      "subscribe": false,
+      "name": "Alvin",
+      "email": "alvin@gmail.com",
+      "subscribe": true,
+      "admin": true,
       "id": 3
     },
     {
-      "name": "Thomas",
-      "email": "thomas@thehouseshop.com",
-      "subscribe": true,
+      "name": "Seb",
+      "email": "seb@gmail.com",
+      "subscribe": false,
+      "admin": false,
       "id": 4
     },
     {
-      "name": "Nick",
-      "email": "nick@thehouseshop.com",
+      "name": "Thomas",
+      "email": "thomas@gmail.com",
       "subscribe": true,
+      "admin": false,
       "id": 5
+    },
+    {
+      "name": "Nick",
+      "email": "nick@gmail.com",
+      "subscribe": false,
+      "admin": false,
+      "id": 6
+    },
+    {
+      "name": "Neil",
+      "email": "neil@gmail.com",
+      "subscribe": true,
+      "admin": true,
+      "id": 7
+    },
+    {
+      "name": "Franki",
+      "email": "franki@gmail.com",
+      "subscribe": false,
+      "admin": true,
+      "id": 8
+    },
+    {
+      "name": "Alex",
+      "email": "alex@gmail.com",
+      "subscribe": false,
+      "admin": false,
+      "id": 9
     }
   ],
   "login": []

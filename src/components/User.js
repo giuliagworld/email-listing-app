@@ -2,25 +2,70 @@ import React from 'react';
 import createReactClass from "create-react-class";
 import PropTypes from 'prop-types';
 
-function User(props) {
-  return (
-    <form onSubmit={this.onSubmit}>
-      <input type='text' placeholder='Name' value={props.name} onChange={this.onInputChange} /><br />
-      <input type='email' placeholder='Email' value={props.email} onChange={this.onInputChange} /><br />
-      <label htmlFor='subscribe'>Subscribe</label>
-      <input id='subscribe' type='checkbox' value={props.subscribe} checked={this.state.subscribe} onChange={this.onInputChange} /><br />
-      <label htmlFor='admin'>Admin</label>
-      <input id='admin' type='checkbox' value={props.admin} checked={this.state.admin} onChange={this.onInputChange} /><br />
-      <button type='submit'>Register</button>
-    </form>
-  )
-}
+const User = createReactClass({
+  propTypes: {
+    name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    subscribe: PropTypes.bool.isRequired,
+    admin: PropTypes.bool.isRequired,
+    onNameChange: PropTypes.func.isRequired,
+    onEmailChange: PropTypes.func.isRequired,
+    onSubscribeChange: PropTypes.func.isRequired,
+    onAdminChange: PropTypes.func.isRequired,
+  },
+  // getInitialState: function () {
+  //   return {
+  //     name: '',
+  //     email: '',
+  //     subscribe: true,
+  //     admin: false
+  //   }
+  // },
+  // onNameChange: function(e) {
+  //   this.setState({
+  //     name: e.target.value
+  //   });
+  // },
+  // onEmailChange: function(e) {
+  //   this.setState({
+  //     email: e.target.value
+  //   });
+  // },
+  // onSubscribeChange: function(e) {
+  //   this.setState({
+  //     subscribe: e.target.checked
+  //   });
+  // },
+  // onAdminChange: function(e) {
+  //   this.setState({
+  //     admin: e.target.checked
+  //   });
+  // },
+  // onSubmit: function (e) {
+  //   e.preventDefault();
+  //   this.props.onAdd(
+  //     this.state.name,
+  //     this.state.email,
+  //     this.state.subscribe,
+  //     this.state.admin
+  //   )
+  //   this.setState({
+  //     name: '',
+  //     email: '',
+  //     subscribe: true,
+  //     admin: false
+  //   })
+  // },
+  render: function() {
+    return (
+      <div>
+        <input type='text' name='name' value={this.props.name} onChange={this.props.onNameChange} />
+        <input type='email' name='email' value={this.props.email} onChange={this.props.onEmailChange} />
+        <input type='checkbox' checked={this.props.subscribe} onChange={this.props.onSubscribeChange} />
+        <input type='checkbox' checked={this.props.admin} onChange={this.props.onAdminChange} /><br />
+      </div>
+    )
+  }
+})
 
-User.propTypes = {
-  name: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  subscribe: PropTypes.bool.isRequired,
-  admin: PropTypes.bool.isRequired
-}
-
-export default User;
+export default User
