@@ -71,7 +71,23 @@ const App = createReactClass({
         this.setState({users : users});
       })
   },
-
+  deleteData: function() {
+    let url = 'http://localhost:3000/users';
+    console.log(this.state.users);
+    
+    let item = this.state.users.map((user) => {
+      console.log(user);
+      console.log(event.target.key);
+      
+      return user;
+    })
+    console.log(item);
+      fetch(url, {
+        method: 'DELETE',
+      }).then((results) => {
+        return results.json();
+      })
+  },
 
 
 
@@ -204,6 +220,7 @@ const App = createReactClass({
               subscribe={user.subscribe}
               admin={user.admin}
               key={user.id}
+              onDelete={this.deleteData}
             />
           );
         }.bind(this))}
