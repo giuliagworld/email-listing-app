@@ -10,13 +10,13 @@ const User = createReactClass({
     email: PropTypes.string.isRequired,
     subscribe: PropTypes.bool.isRequired,
     admin: PropTypes.bool.isRequired,
-    onNameChange: PropTypes.func.isRequired,
-    onEmailChange: PropTypes.func.isRequired,
-    onSubscribeChange: PropTypes.func.isRequired,
-    onAdminChange: PropTypes.func.isRequired,
-    onEdit: PropTypes.func.isRequired,
-    onSave: PropTypes.func.isRequired,
-    onDelete: PropTypes.func.isRequired
+    // onNameChange: PropTypes.func.isRequired,
+    // onEmailChange: PropTypes.func.isRequired,
+    // onSubscribeChange: PropTypes.func.isRequired,
+    // onAdminChange: PropTypes.func.isRequired,
+    // onEdit: PropTypes.func.isRequired,
+    // onSave: PropTypes.func.isRequired,
+    // onDelete: PropTypes.func.isRequired
   },
   // onNameChange: function(e) {
   //   this.setState({
