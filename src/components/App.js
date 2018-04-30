@@ -60,6 +60,22 @@ const App = createReactClass({
       })
     }
   },
+  deleteData: function (e) {
+    let url = 'http://localhost:3000/users';
+    let item = e.target.parentElement.id;
+      fetch(url + '/' + item, {
+        method: 'DELETE',
+      }).then((results) => {
+        return results.json();
+      }).then((data) => {
+        let index = this.state.users.map(function (user) {
+          return user.id;
+        }).indexOf(item);
+        this.state.users.splice(index, 1)
+        this.setState(this.state);
+      }).catch((ex) => {
+      })
+  },
   componentDidMount() {
     fetch('http://localhost:3000/users')
       .then((results) => {
@@ -71,23 +87,7 @@ const App = createReactClass({
         this.setState({users : users});
       })
   },
-  deleteData: function() {
-    let url = 'http://localhost:3000/users';
-    console.log(this.state.users);
-    
-    let item = this.state.users.map((user) => {
-      console.log(user);
-      console.log(event.target.key);
-      
-      return user;
-    })
-    console.log(item);
-      fetch(url, {
-        method: 'DELETE',
-      }).then((results) => {
-        return results.json();
-      })
-  },
+
 
 
 
@@ -220,6 +220,7 @@ const App = createReactClass({
               subscribe={user.subscribe}
               admin={user.admin}
               key={user.id}
+              id={user.id}
               onDelete={this.deleteData}
             />
           );

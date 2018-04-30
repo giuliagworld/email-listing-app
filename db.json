@@ -6,13 +6,6 @@
       "subscribe": false,
       "admin": true,
       "id": 1
-    },
-    {
-      "name": "Dean",
-      "email": "dean@gmail.com",
-      "subscribe": true,
-      "admin": false,
-      "id": 2
     }
   ],
   "login": []

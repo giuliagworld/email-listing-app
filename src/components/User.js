@@ -55,7 +55,7 @@ const User = createReactClass({
   // },
   render: function() {
     return (
-      <div className={css(Sheet.container)}>
+      <div id={this.props.id} className={css(Sheet.container)}>
         <input type='text' name='name' value={this.props.name} onChange={this.props.onNameChange} />
         <input type='email' name='email' value={this.props.email} onChange={this.props.onEmailChange} />
         <input type='checkbox' checked={this.props.subscribe} onChange={this.props.onSubscribeChange} />
