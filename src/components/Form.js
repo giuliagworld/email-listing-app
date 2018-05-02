@@ -1,41 +1,37 @@
-import React from 'react';
-import createReactClass from "create-react-class";
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const Form = createReactClass({
-  propTypes: {
-    onAdd: PropTypes.func.isRequired
-  },
-  getInitialState: function () {
-    return {
-      name: '',
-      email: '',
-      subscribe: true,
-      admin: false
-    }
-  },
-  onNameChange: function(e) {
-    this.setState({
-      name: e.target.value
-    });
-  },
-  onEmailChange: function(e) {
-    this.setState({
-      email: e.target.value
-    });
-  },
-  onSubscribeChange: function(e) {
-    this.setState({
-      subscribe: e.target.checked
-    });
-  },
-  onAdminChange: function(e) {
-    this.setState({
-      admin: e.target.checked
-    });
-  },
-  onSubmit: function(e) {
-    e.preventDefault();
+export default class Form extends Component {
+
+  state = {
+    name: '',
+    email: '',
+    subscribe: true,
+    admin: false
+  };
+
+  onNameChange = (e) => {
+    const name = e.target.value;
+    this.setState({ name: name });
+  };
+
+  onEmailChange = (e) => {
+    const email = e.target.value;
+    this.setState({ email: email });
+  };
+
+  onSubscribeChange = (e) => {
+    const subscribe = e.target.checked;
+    this.setState({ subscribe: subscribe });
+  };
+
+  onAdminChange = (e) => {
+    const admin = e.target.checked;
+    this.setState({ admin: admin });
+  };
+
+  onSubmit = (e) => {
+    if (e) e.preventDefault();
     this.props.onAdd(
       this.state.name,
       this.state.email,
@@ -48,8 +44,9 @@ const Form = createReactClass({
       subscribe: true,
       admin: false
     })
-  },
-  render: function() {
+  };
+
+  render() {
     return (
       <form onSubmit={this.onSubmit}>
         <input type='text' placeholder='Name' value={this.state.name} onChange={this.onNameChange} /><br />
@@ -62,6 +59,9 @@ const Form = createReactClass({
       </form>
     )
   }
-})
+}
 
-export default Form
+Form.propTypes = {
+  onAdd: PropTypes.func.isRequired
+}
+

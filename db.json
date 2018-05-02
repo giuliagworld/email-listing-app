@@ -1,11 +1,18 @@
 {
   "users": [
     {
-      "name": "Giulia",
+      "name": "Giulia Gazza",
       "email": "giulia@gmail.com",
       "subscribe": false,
       "admin": true,
       "id": 1
+    },
+    {
+      "name": "Dean Ridgeley",
+      "email": "dean@gmail.it",
+      "subscribe": false,
+      "admin": true,
+      "id": 2
     }
   ],
   "login": []

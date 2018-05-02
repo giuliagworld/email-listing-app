@@ -1,20 +1,16 @@
-import React from 'react';
-import createReactClass from "create-react-class";
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Form from './Form';
 import User from './User';
 
+export default class App extends Component {
 
-const App = createReactClass({
+  state = {
+    users: []
+  };
 
-  getInitialState: function() {
-    return {
-      users: []
-    }
-  },
-
-  nameValidation: function(name) {
+  nameValidation = (name) => {
     let expression = /^[ a-zA-Z-]+$/;
     if (name.match(expression)) {
       return true;
@@ -22,9 +18,9 @@ const App = createReactClass({
     else {
       return false;
     }
-  },
+  };
 
-  emailValidation: function(email) {
+  emailValidation = (email) => {
     let expression = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     if (email.match(expression)) {
       return true;
@@ -32,9 +28,9 @@ const App = createReactClass({
     else {
       return false;
     }
-  },
+  };
 
-  onAddUser: function(name, email, subscribe, admin) {
+  onAddUser = (name, email, subscribe, admin) => {
     let url = 'http://localhost:3000/users';
     if (this.nameValidation(name) && this.emailValidation(email)) {
       fetch(url, {
@@ -67,9 +63,12 @@ const App = createReactClass({
           console.error('Error:', error)
         )
     }
-  },
+    else {
+      console.log('validation failed')
+    }
+  };
 
-  deleteData: function (e) {
+  deleteData = (e) => {
     let url = 'http://localhost:3000/users';
     let item = e.target.parentElement.id;
     fetch(url + '/' + item, {
@@ -88,9 +87,66 @@ const App = createReactClass({
     .catch(error =>
       console.error('Error:', error)
     )
-  },
+  };
 
-  componentDidMount() {
+  editData = () => {
+    console.log('bla');
+  };
+
+  updateName = (e) => {
+    let item = e.target.parentElement.id;
+    const users = this.state.users;
+    users[item - 1].name = e.target.value;
+    this.setState({ users });
+  };
+
+  updateEmail = (e) => {
+    let item = e.target.parentElement.id;
+    const users = this.state.users;
+    users[item - 1].email = e.target.value;
+    this.setState({ users });
+  };
+
+  updateSubscribe = (e) => {
+    let item = e.target.parentElement.id;
+    const users = this.state.users;
+    users[item - 1].subscribe = e.target.checked;
+    this.setState({ users });
+  };
+
+  updateAdmin = (e) => {
+    let item = e.target.parentElement.id;
+    const users = this.state.users;
+    users[item - 1].admin = e.target.checked;
+    this.setState({ users });
+  };
+
+  saveData = (e) => {
+    let url = 'http://localhost:3000/users';
+    let item = e.target.parentElement.id;
+
+    fetch(url + '/' + item, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        "name": this.state.users[item - 1].name,
+        "email": this.state.users[item - 1].email,
+        "subscribe": this.state.users[item - 1].subscribe,
+        "admin": this.state.users[item - 1].admin
+      })
+    })
+    .then(results =>
+      results.json()
+    )
+    .catch(error =>
+      console.error('Error:', error)
+    )
+  };
+
+  componentDidMount = () => {
     fetch('http://localhost:3000/users')
     .then((results) => {
       return results.json();
@@ -101,32 +157,14 @@ const App = createReactClass({
     .catch(error =>
       console.error('Error:', error)
     )
-  },
+  };
 
-  // onInputChange: function (e) {
-  //   const target = e.target;
-  //   const value = target.type === 'checkbox' ? target.checked : target.value;
-  //   const name = target.name;
-
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // },
-
-  // shouldComponentUpdate() {
-  //   console.log('something has changed');
-  //   return true;
-  // },
-  // componentWillUpdate() {
-  //   console.log('change it');
-  // },
-
-  render: function() {
+  render() {
     return (
       <div>
         <Form onAdd={this.onAddUser}/>
         <br />
-        {this.state.users.map(function (user) {
+        {this.state.users.map(function(user) {
           return (
             <User
               name={user.name}
@@ -136,18 +174,17 @@ const App = createReactClass({
               key={user.id}
               id={user.id}
               onDelete={this.deleteData}
+              onEdit={this.editData}
+              onSave={this.saveData}
+              onNameChange={this.updateName}
+              onEmailChange={this.updateEmail}
+              onSubscribeChange={this.updateSubscribe}
+              onAdminChange={this.updateAdmin}
             />
           );
         }.bind(this))}
-        <br />
-        {/* <form onSubmit={this.onLogin}>
-          <p>Login</p>
-          <input type='email' placeholder='Email' name='login' value={this.state.login} onChange={this.onInputChange} /><br />
-          <button type='submit'>Submit</button>
-        </form> */}
       </div>
     )
   }
-})
+}
 
-export default App;
