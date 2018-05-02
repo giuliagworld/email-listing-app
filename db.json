@@ -8,10 +8,10 @@
       "id": 1
     },
     {
-      "name": "Dean Ridgeley",
-      "email": "dean@gmail.it",
-      "subscribe": false,
-      "admin": true,
+      "name": "Thomas",
+      "email": "thomas@gmail.com",
+      "subscribe": true,
+      "admin": false,
       "id": 2
     }
   ],

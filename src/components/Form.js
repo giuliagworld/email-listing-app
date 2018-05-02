@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Error from './Error';
+
 export default class Form extends Component {
 
   state = {
     name: '',
     email: '',
     subscribe: true,
-    admin: false
+    admin: false,
   };
 
   onNameChange = (e) => {
@@ -50,7 +52,9 @@ export default class Form extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         <input type='text' placeholder='Name' value={this.state.name} onChange={this.onNameChange} /><br />
+        {/* <Error isValid={this.state.isNameValid}/>*/}
         <input type='email' placeholder='Email' value={this.state.email} onChange={this.onEmailChange} /><br />
+        {/* <Error isValid={this.state.isEmailValid}/>*/}
         <label htmlFor='subscribe'>Subscribe</label>
         <input id='subscribe' type='checkbox' checked={this.state.subscribe} onChange={this.onSubscribeChange} /><br />
         <label htmlFor='admin'>Admin</label>
@@ -61,7 +65,7 @@ export default class Form extends Component {
   }
 }
 
-Form.propTypes = {
-  onAdd: PropTypes.func.isRequired
-}
+// Form.propTypes = {
+//   onAdd: PropTypes.func.isRequired
+// }
 

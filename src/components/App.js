@@ -55,7 +55,7 @@ export default class App extends Component {
           name: data.name,
           email: data.email,
           subscribe: data.subscribe,
-          admin: data.admin,
+          admin: data.admin
         })
         this.setState(this.state);
         })
@@ -87,10 +87,6 @@ export default class App extends Component {
     .catch(error =>
       console.error('Error:', error)
     )
-  };
-
-  editData = () => {
-    console.log('bla');
   };
 
   updateName = (e) => {
