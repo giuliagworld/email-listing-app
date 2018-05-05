@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { css } from 'aphrodite';
 import Sheet from '../styles/User';
 
-const Component = props => {
-  
-  if (props.isValid == false) {
-    return <div className={css(Sheet.error)}>Error</div>
+const NameError = props => {
+
+  if (props.isNameValid == false) {
+    return <div className={css(Sheet.error)}>Name Error</div>
   }
   else {
     return ''
   }
 }
 
-export default Component
+export default NameError

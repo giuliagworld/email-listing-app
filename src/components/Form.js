@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Error from './Error';
+import NameError from './NameError';
+import EmailError from './EmailError';
 
 export default class Form extends Component {
 
@@ -50,11 +51,17 @@ export default class Form extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
+      <form onSubmit={this.onSubmit} noValidate>
         <input type='text' placeholder='Name' value={this.state.name} onChange={this.onNameChange} /><br />
-        {/* <Error isValid={this.state.isNameValid}/>*/}
+        <NameError
+          isNameValid={this.props.isNameValid}
+          // isValid={this.props.isValid}
+        />
         <input type='email' placeholder='Email' value={this.state.email} onChange={this.onEmailChange} /><br />
-        {/* <Error isValid={this.state.isEmailValid}/>*/}
+        <EmailError
+          isEmailValid={this.props.isEmailValid}
+          // isValid={this.props.isValid}
+        />
         <label htmlFor='subscribe'>Subscribe</label>
         <input id='subscribe' type='checkbox' checked={this.state.subscribe} onChange={this.onSubscribeChange} /><br />
         <label htmlFor='admin'>Admin</label>
@@ -65,7 +72,4 @@ export default class Form extends Component {
   }
 }
 
-// Form.propTypes = {
-//   onAdd: PropTypes.func.isRequired
-// }
 

@@ -13,9 +13,11 @@ export default class App extends Component {
   nameValidation = (name) => {
     let expression = /^[ a-zA-Z-]+$/;
     if (name.match(expression)) {
+      this.setState({ isNameValid: true })
       return true;
     }
     else {
+      this.setState({ isNameValid: false })
       return false;
     }
   };
@@ -23,9 +25,11 @@ export default class App extends Component {
   emailValidation = (email) => {
     let expression = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
     if (email.match(expression)) {
+      this.setState({ isEmailValid: true })
       return true;
     }
     else {
+      this.setState({ isEmailValid: false })
       return false;
     }
   };
@@ -50,20 +54,23 @@ export default class App extends Component {
         return results.json();
       })
       .then((data) => {
-        this.state.users.push({
-          id: data.id,
-          name: data.name,
-          email: data.email,
-          subscribe: data.subscribe,
-          admin: data.admin
+          this.state.users.push({
+            id: data.id,
+            name: data.name,
+            email: data.email,
+            subscribe: data.subscribe,
+            admin: data.admin
+          })
+          this.setState(this.state);
         })
-        this.setState(this.state);
-        })
-        .catch(error =>
-          console.error('Error:', error)
-        )
+      .catch(error =>
+        console.error('Error:', error)
+      )
     }
     else {
+      console.log(this.state.isNameValid);
+      console.log(this.state.isEmailValid);
+
       console.log('validation failed')
     }
   };
@@ -158,7 +165,12 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Form onAdd={this.onAddUser}/>
+        <Form
+          onAdd={this.onAddUser}
+          isNameValid={this.state.isNameValid}
+          isEmailValid={this.state.isEmailValid}
+          // isValid={this.state.isValid}
+        />
         <br />
         {this.state.users.map(function(user) {
           return (
@@ -170,7 +182,6 @@ export default class App extends Component {
               key={user.id}
               id={user.id}
               onDelete={this.deleteData}
-              onEdit={this.editData}
               onSave={this.saveData}
               onNameChange={this.updateName}
               onEmailChange={this.updateEmail}
