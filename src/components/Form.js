@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { css } from 'aphrodite';
+import Sheet from '../styles/User';
 
 import NameError from './NameError';
 import EmailError from './EmailError';
@@ -51,22 +53,22 @@ export default class Form extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit} noValidate>
-        <input type='text' placeholder='Name' value={this.state.name} onChange={this.onNameChange} /><br />
+      <form onSubmit={this.onSubmit} className={css(Sheet.container)} noValidate>
+        <input className={css(Sheet.input)} type='text' placeholder='Name' value={this.state.name} onChange={this.onNameChange} /><br />
         <NameError
           isNameValid={this.props.isNameValid}
           // isValid={this.props.isValid}
         />
-        <input type='email' placeholder='Email' value={this.state.email} onChange={this.onEmailChange} /><br />
+        <input className={css(Sheet.input)} type='email' placeholder='Email' value={this.state.email} onChange={this.onEmailChange} /><br />
         <EmailError
           isEmailValid={this.props.isEmailValid}
           // isValid={this.props.isValid}
         />
         <label htmlFor='subscribe'>Subscribe</label>
-        <input id='subscribe' type='checkbox' checked={this.state.subscribe} onChange={this.onSubscribeChange} /><br />
+        <input className={css(Sheet.checkbox)} id='subscribe' type='checkbox' checked={this.state.subscribe} onChange={this.onSubscribeChange} /><br />
         <label htmlFor='admin'>Admin</label>
-        <input id='admin' type='checkbox' checked={this.state.admin} onChange={this.onAdminChange} /><br />
-        <button type='submit'>Register</button>
+        <input className={css(Sheet.checkbox)} id='admin' type='checkbox' checked={this.state.admin} onChange={this.onAdminChange} /><br />
+        <button className={css(Sheet.button)} type='submit'>Register</button>
       </form>
     )
   }
