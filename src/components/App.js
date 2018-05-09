@@ -35,7 +35,7 @@ export default class App extends Component {
   };
 
   onAddUser = (name, email, subscribe, admin) => {
-    let url = 'http://localhost:3000/users';
+    let url = 'https://email-listing-app.herokuapp.com/users';
     if (this.nameValidation(name) && this.emailValidation(email)) {
       fetch(url, {
         method: 'POST',
@@ -76,7 +76,7 @@ export default class App extends Component {
   };
 
   deleteData = (e) => {
-    let url = 'http://localhost:3000/users';
+    let url = 'https://email-listing-app.herokuapp.com/users';
     let item = e.target.parentElement.id;
     fetch(url + '/' + item, {
       method: 'DELETE',
@@ -125,7 +125,7 @@ export default class App extends Component {
   };
 
   saveData = (e) => {
-    let url = 'http://localhost:3000/users';
+    let url = 'https://email-listing-app.herokuapp.com/users';
     let item = e.target.parentElement.id;
 
     fetch(url + '/' + item, {
@@ -150,7 +150,7 @@ export default class App extends Component {
   };
 
   componentDidMount = () => {
-    fetch('http://localhost:3000/users')
+    fetch('https://email-listing-app.herokuapp.com/users')
     .then((results) => {
       return results.json();
     })
