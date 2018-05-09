@@ -22165,7 +22165,7 @@ function (_Component) {
         return false;
       }
     }), "onAddUser", function (name, email, subscribe, admin) {
-      var url = 'http://localhost:3000/users';
+      var url = 'https://email-listing-app.herokuapp.com/users';
 
       if (_this.nameValidation(name) && _this.emailValidation(email)) {
         fetch(url, {
@@ -22201,7 +22201,7 @@ function (_Component) {
         console.log('validation failed');
       }
     }), "deleteData", function (e) {
-      var url = 'http://localhost:3000/users';
+      var url = 'https://email-listing-app.herokuapp.com/users';
       var item = e.target.parentElement.id;
       fetch(url + '/' + item, {
         method: 'DELETE'
@@ -22251,7 +22251,7 @@ function (_Component) {
         users: users
       });
     }), "saveData", function (e) {
-      var url = 'http://localhost:3000/users';
+      var url = 'https://email-listing-app.herokuapp.com/users';
       var item = e.target.parentElement.id;
       fetch(url + '/' + item, {
         method: 'PUT',
@@ -22271,7 +22271,7 @@ function (_Component) {
         return console.error('Error:', error);
       });
     }), "componentDidMount", function () {
-      fetch('http://localhost:3000/users').then(function (results) {
+      fetch('https://email-listing-app.herokuapp.com/users').then(function (results) {
         return results.json();
       }).then(function (data) {
         _this.setState({
